@@ -14,7 +14,7 @@ class RunAdsRotation extends Command
      *
      * @var string
      */
-    protected $signature = 'app:run-ads-rotation {linkGroup}';
+    protected $signature = 'app:run-ads-rotation {linkGroupId}';
 
     /**
      * The console command description.
@@ -28,22 +28,22 @@ class RunAdsRotation extends Command
      */
     public function handle()
     {
-        $linkGroup = $this->argument('linkGroup');
-        $runningLink = Link::whereHas('groups', function ($qry) use ($linkGroup) {
-            $qry->where('link_groups.id', $linkGroup.id)
-                ->wherePivot('ads_rotation_status', 'running');
+        $linkGroupId = $this->argument('linkGroupId');
+        $runningLink = Link::whereHas('groups', function ($qry) use ($linkGroupId) {
+            $qry->where('link_groups.id', $linkGroupId)
+                ->where('link_group_link.ads_rotation_status', 'running');
         })
             ->first();
         if (!$runningLink) {
             $this->error("No running link found for the specified group.");
             return;
         }
-        $nextLink = Link::where('created_at', '>', $idleLink->created_at)
+        $nextLink = Link::where('created_at', '>', $runningLink->created_at)
             ->orderBy('created_at', 'asc')
             ->first();
         if ($nextLink) {
-            $nextLink->groups()->sync([$linkGroup.id => ['ads_rotation_status' => 'running']]);
-            $runningLink->groups()->sync([$linkGroup.id => ['ads_rotation_status' => 'sleep']]);
+            $nextLink->groups()->sync([$linkGroupId => ['ads_rotation_status' => 'running']]);
+            $runningLink->groups()->sync([$linkGroupId => ['ads_rotation_status' => 'sleep']]);
         }
     }
 }

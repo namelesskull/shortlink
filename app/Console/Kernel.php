@@ -49,8 +49,9 @@ class Kernel extends ConsoleKernel
         $linkGroups = LinkGroup::whereNotNull('ads_rotated_at')->get();
         foreach ($linkGroups as $linkGroup) {
             $schedule
-                ->command(RunAdsRotation::class, [$linkGroup])
-                ->dailyAt($linkGroup->add_rotated_at);
+                ->command(RunAdsRotation::class, [$linkGroup->id])
+                ->everyMinute();
+                //->dailyAt($linkGroup->add_rotated_at);
         }
     }
 
