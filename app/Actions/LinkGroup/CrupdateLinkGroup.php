@@ -34,7 +34,8 @@ class CrupdateLinkGroup
             'hash' => $data['hash'],
             'utm' => $data['utm'] ?? null,
             'rotator' => $data['rotator'] ?? false,
-            'domain_id' => $data['domain_id'] ?? null, // can be 0
+            'domain_id' => $data['domain_id'] ?? null, // can be 0,
+            'ads_rotated_at' => $data['ads_rotated_at'] ?? null,
         ];
 
         if (array_key_exists('image', $data)) {

@@ -16,7 +16,11 @@ class FindLinkeable
         if ($link = $this->findLink($hash)) {
             return $link;
         } elseif ($linkGroup = $this->findLinkGroupOrBiolink($hash)) {
-            if (!$linkGroup->rotator) {
+            if ($linkGroup->ads_rotated_at !== null) {
+                if ($rotatorLink = $linkGroup->rollingLink()->first()) {
+                    return $rotatorLink;
+                }
+            } elseif (!$linkGroup->rotator) {
                 return $linkGroup;
             } elseif ($rotatorLink = $linkGroup->randomLink()->first()) {
                 return $rotatorLink;

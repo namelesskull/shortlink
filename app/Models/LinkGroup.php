@@ -34,6 +34,7 @@ class LinkGroup extends BaseModel
         'user_id' => 'integer',
         'active' => 'boolean',
         'rotator' => 'boolean',
+        'add_rotated_at' => 'datetime:H:i',
         'expires_at' => 'datetime',
         'clicked_at' => 'datetime',
         'activates_at' => 'datetime',
@@ -60,7 +61,7 @@ class LinkGroup extends BaseModel
             Link::class,
             'link_group_link',
             'link_group_id',
-        );
+        )->withPivot(['ads_rotation_status']);
     }
 
     public function tags(): MorphToMany
@@ -77,6 +78,13 @@ class LinkGroup extends BaseModel
     {
         return $this->belongsToMany(Link::class, 'link_group_link')
             ->inRandomOrder()
+            ->limit(1);
+    }
+
+    public function rollingLink(): BelongsToMany
+    {
+        return $this->belongsToMany(Link::class, 'link_group_link')
+            ->wherePivot('ads_rotation_status', 'running')
             ->limit(1);
     }
 
