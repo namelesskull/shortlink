@@ -13,7 +13,7 @@ import threadsAhead from './svg-bgs/Threads-Ahead.svg';
 import launchDay from './svg-bgs/Launch-Day.svg';
 import sprinkle from './svg-bgs/Sprinkle.svg';
 import circuitBoard from './svg-bgs/Circuit-Board.svg';
-import nuclearFocalPoint from './svg-bgs/nuclear-focalpoint.svg';
+import nuclearFocalPoint from './svg-bgs/Circuit-Board.svg';
 import snow from './svg-bgs/Snow.svg';
 import {message} from '@common/i18n/message';
 import {BackgroundSelectorConfig} from '@common/background-selector/background-selector-config';
