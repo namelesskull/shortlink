@@ -6,8 +6,10 @@ use App\Console\Commands\DeleteExpiredLinkeables;
 use App\Console\Commands\DisableExpiredLeapLinks;
 use App\Console\Commands\ExpireLinksCreatedFromHomepage;
 use App\Console\Commands\ResetDemoSite;
+use App\Console\Commands\RunAdsRotation;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
+use App\Models\LinkGroup;
 
 class Kernel extends ConsoleKernel
 {
@@ -42,6 +44,13 @@ class Kernel extends ConsoleKernel
 
         if (config('queue.default') !== 'sync') {
             $schedule->command('horizon:snapshot')->everyFiveMinutes();
+        }
+
+        $linkGroups = LinkGroup::whereNotNull('ads_rotated_at')->get();
+        foreach ($linkGroups as $linkGroup) {
+            $schedule
+                ->command(RunAdsRotation::class, [$linkGroup])
+                ->dailyAt($linkGroup->add_rotated_at);
         }
     }
 
