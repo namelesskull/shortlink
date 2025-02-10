@@ -14,6 +14,8 @@ export interface LinkGroup {
   hash: string;
   active: boolean;
   rotator: boolean;
+  switch_at?:boolean,
+  ads_rotated_at?:string,
   user_id: number;
   user?: User;
   utm?: string;

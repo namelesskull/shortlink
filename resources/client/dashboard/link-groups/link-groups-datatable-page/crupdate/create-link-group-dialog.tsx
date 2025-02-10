@@ -26,6 +26,7 @@ export function CreateLinkGroupDialog() {
       hash: nanoid(6),
       rotator: false,
       domain_id: custom_domains?.allow_all_option ? undefined : 0,
+      ads_rotated_at:"1:00"
     },
   });
 

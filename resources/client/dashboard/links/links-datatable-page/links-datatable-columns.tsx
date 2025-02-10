@@ -111,6 +111,16 @@ export const linksDatatableColumns: ColumnConfig<Link>[] = [
       link.clicked_at ? <FormattedDate date={link.clicked_at} /> : '',
   },
   {
+    key: 'ads_rotation_status',
+    allowsSorting: true,
+    header: () => <Trans message="Status" />,
+    body: link =>
+      link.ads_rotation_status ?       <Chip size="xs" radius="rounded" className="capitalize">
+    <Trans message={link.ads_rotation_status} />
+  </Chip> : '',
+  },
+  
+  {
     key: 'actions',
     header: () => <Trans message="Actions" />,
     hideHeader: true,

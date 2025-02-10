@@ -1,0 +1,43 @@
+$ node_modules
+# Laravel
+/vendor
+/node_modules
+/public/storage
+/storage/*.key
+/.env
+/.env.*.local
+/.phpunit.result.cache
+/bootstrap/cache/
+.phpunit.result.cache
+Homestead.yaml
+Homestead.json
+/vite
+npm-debug.log
+yarn-error.log
+.pnpm-debug.log
+.DS_Store
+Thumbs.db
+
+# Vite
+/public/build
+/public/hot
+/.vite
+/.cache
+/vite.config.js
+/vite.config.ts
+/.vite-inspector
+
+# Inertia.js
+/resources/js/.vite
+/resources/js/*.log
+/resources/js/*.cache
+
+# Editor & OS
+.idea
+.vscode
+*.sublime-project
+*.sublime-workspace
+*.log
+*.swp
+*.swo
+*.bak

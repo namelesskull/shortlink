@@ -83,6 +83,13 @@ export const LinkGroupsDatatableColumns: ColumnConfig<LinkGroup>[] = [
       ),
   },
   {
+    key: 'ads_rotated_at',
+    allowsSorting: true,
+    header: () => <Trans message="Switch time" />,
+    body: group =>
+      group.ads_rotated_at ? <p>{group.ads_rotated_at}</p> : '',
+  },
+  {
     key: 'updated_at',
     allowsSorting: true,
     header: () => <Trans message="Last updated" />,

@@ -10133,6 +10133,12 @@ const linksDatatableColumns = [
     body: (link) => link.clicked_at ? /* @__PURE__ */ jsx(FormattedDate, { date: link.clicked_at }) : ""
   },
   {
+    key: "ads_rotation_status",
+    allowsSorting: true,
+    header: () => /* @__PURE__ */ jsx(Trans, { message: "Status" }),
+    body: (link) => link.ads_rotation_status ? /* @__PURE__ */ jsx(Chip, { size: "xs", radius: "rounded", className: "capitalize", children: /* @__PURE__ */ jsx(Trans, { message: link.ads_rotation_status }) }) : ""
+  },
+  {
     key: "actions",
     header: () => /* @__PURE__ */ jsx(Trans, { message: "Actions" }),
     hideHeader: true,
@@ -10623,7 +10629,9 @@ function CrupdateLinkGroupForm({
   form,
   formId
 }) {
-  const { clearErrors } = form;
+  const { clearErrors, watch } = form;
+  const isSwitchAtChecked = watch("switch_at");
+  const isRotated = watch("rotator");
   return /* @__PURE__ */ jsxs(
     Form,
     {
@@ -10674,7 +10682,24 @@ function CrupdateLinkGroupForm({
             description: /* @__PURE__ */ jsx(Trans, { message: "When checked, url above will redirect to random link from the group, instead of showing all links belonging to group." }),
             children: /* @__PURE__ */ jsx(Trans, { message: "Rotator" })
           }
-        )
+        ),
+        isRotated && /* @__PURE__ */ jsx(
+          FormSwitch,
+          {
+            name: "switch_at",
+            description: /* @__PURE__ */ jsx(Trans, { message: "Set URL short switch time" }),
+            children: /* @__PURE__ */ jsx(Trans, { message: "Switch At" })
+          }
+        ),
+        isSwitchAtChecked && /* @__PURE__ */ jsx("div", { className: "mt-4 p-4 border rounded bg-gray-100", children: /* @__PURE__ */ jsx(
+          FormTextField,
+          {
+            name: "ads_rotated_at",
+            label: /* @__PURE__ */ jsx(Trans, { message: "Switch Time" }),
+            type: "time",
+            className: "mb-4"
+          }
+        ) })
       ]
     }
   );
@@ -10803,6 +10828,12 @@ const LinkGroupsDatatableColumns = [
     body: (group) => group.rotator ? /* @__PURE__ */ jsx(CheckIcon, { className: "icon-md text-positive" }) : /* @__PURE__ */ jsx(CloseIcon, { className: "icon-md text-danger" })
   },
   {
+    key: "ads_rotated_at",
+    allowsSorting: true,
+    header: () => /* @__PURE__ */ jsx(Trans, { message: "Switch time" }),
+    body: (group) => group.ads_rotated_at ? /* @__PURE__ */ jsx("p", { children: group.ads_rotated_at }) : ""
+  },
+  {
     key: "updated_at",
     allowsSorting: true,
     header: () => /* @__PURE__ */ jsx(Trans, { message: "Last updated" }),
@@ -10925,7 +10956,8 @@ function CreateLinkGroupDialog() {
       active: true,
       hash: nanoid(6),
       rotator: false,
-      domain_id: (custom_domains == null ? void 0 : custom_domains.allow_all_option) ? void 0 : 0
+      domain_id: (custom_domains == null ? void 0 : custom_domains.allow_all_option) ? void 0 : 0,
+      ads_rotated_at: "1:00"
     }
   });
   const createGroup = useCreateLinkGroup(form);
@@ -15260,7 +15292,6 @@ const threadsAhead = "/assets/Threads-Ahead-28db1646.svg";
 const launchDay = "/assets/Launch-Day-f2926785.svg";
 const sprinkle = "/assets/Sprinkle-d1a9b59f.svg";
 const circuitBoard = "/assets/Circuit-Board-b3635293.svg";
-const nuclearFocalPoint = "/assets/nuclear-focalpoint-166680aa.svg";
 const snow = "/assets/Snow-424582cb.svg";
 const BaseImageBg = {
   type: "image",
@@ -15351,7 +15382,7 @@ const ImageBackgrounds = [
     ...BaseImageBg,
     id: "img8",
     backgroundColor: "#442233",
-    backgroundImage: `url(${nuclearFocalPoint})`,
+    backgroundImage: `url(${circuitBoard})`,
     label: message("Nuclear point"),
     backgroundSize: "cover",
     backgroundRepeat: "no-repeat",
@@ -18051,4 +18082,4 @@ export {
   CustomPageDatatableFilters as y,
   articlesSvg as z
 };
-//# sourceMappingURL=dashboard-routes-2fef812b.mjs.map
+//# sourceMappingURL=dashboard-routes-f9a8f97e.mjs.map

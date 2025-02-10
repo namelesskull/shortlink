@@ -1,8 +1,8 @@
 import { jsxs, jsx } from "react/jsx-runtime";
 import { useState } from "react";
-import { u as useAdminReport, A as AdminHeaderReport, V as VisitorsReportCharts } from "./admin-routes-8a0a2533.mjs";
+import { u as useAdminReport, A as AdminHeaderReport, V as VisitorsReportCharts } from "./admin-routes-f8a17134.mjs";
 import { Y as StaticPageTitle, T as Trans } from "../server-entry.mjs";
-import { a5 as DateRangePresets, a6 as ReportDateSelector } from "./dashboard-routes-2fef812b.mjs";
+import { a5 as DateRangePresets, a6 as ReportDateSelector } from "./dashboard-routes-f9a8f97e.mjs";
 import "react-router-dom";
 import "clsx";
 import "@tanstack/react-query";
@@ -69,4 +69,4 @@ function AdminReportPage() {
 export {
   AdminReportPage as default
 };
-//# sourceMappingURL=admin-report-page-10ef0350.mjs.map
+//# sourceMappingURL=admin-report-page-99eb2389.mjs.map

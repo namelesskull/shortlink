@@ -46,6 +46,7 @@ class CrupdateLink
         $existLinkCount = Link::whereHas('groups', function ($qry) use ($data) {
             $qry->where('id', $data['groups'][0]);
         })->count();
+
         $attributes = !$link->exists
             ? array_merge($this->getMetadataFromUrl($longUrl), [
                 'user_id' => Auth::id(),
