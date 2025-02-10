@@ -70,24 +70,6 @@ export const SharedDashboardRoutes = ({forCurrentUser = false}) => {
       element: <LinkClicksReportPage />,
     },
 
-    //campaign
-    {
-      path: 'link-campaigns',
-      element: <LinkGroupsDatatablePage forCurrentUser={forCurrentUser} />,
-    },
-    {
-      path: 'link-campaigns/:groupId',
-      element: <LinkGroupClicksReportPage />,
-    },
-    {
-      path: 'link-campaigns/:groupId/links',
-      element: <LinkGroupsLinksDatatablePage />,
-    },
-    {
-      path: 'link-campaigns/:groupId/links/:linkId',
-      element: <LinkClicksReportPage />,
-    },
-
     // domains
     {
       path: 'custom-domains',

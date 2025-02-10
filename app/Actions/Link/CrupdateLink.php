@@ -42,7 +42,6 @@ class CrupdateLink
                 );
             }
         }
-
         $attributes = !$link->exists
             ? array_merge($this->getMetadataFromUrl($longUrl), [
                 'user_id' => Auth::id(),

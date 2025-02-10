@@ -10,7 +10,7 @@ import {AliasField} from '@app/dashboard/links/forms/alias-field';
 export interface CrupdateLinkGroupPayload
   extends Pick<
     LinkGroup,
-    'name' | 'description' | 'hash' | 'active' | 'rotator' | 'domain_id'
+    'name' | 'description' | 'hash' | 'active' | 'rotator' | 'domain_id' | 'switch_at' | 'ads_rotated_at'
   > {}
 
 interface CrupdateLinkGroupFormProps {
@@ -18,18 +18,21 @@ interface CrupdateLinkGroupFormProps {
   form: UseFormReturn<CrupdateLinkGroupPayload>;
   onSubmit: (values: CrupdateLinkGroupPayload) => void;
 }
+
 export function CrupdateLinkGroupForm({
   onSubmit,
   form,
   formId,
 }: CrupdateLinkGroupFormProps) {
-  const {clearErrors} = form;
+  const {clearErrors, watch} = form;
+  const isSwitchAtChecked = watch('switch_at');
+  const isRotated = watch("rotator")
+
   return (
     <Form
       form={form}
       id={formId}
       onBeforeSubmit={() => {
-        // hook form won't clear errors for fields that are not bound to input
         clearErrors('hash');
       }}
       onSubmit={onSubmit}
@@ -44,7 +47,9 @@ export function CrupdateLinkGroupForm({
         />
         <AliasField form={form} name="hash" />
       </div>
+
       <LinkDomainSelect name="domain_id" className="mb-24" />
+
       <FormTextField
         name="description"
         className="mb-24"
@@ -52,6 +57,7 @@ export function CrupdateLinkGroupForm({
         inputElementType="textarea"
         rows={2}
       />
+
       <FormSwitch
         name="active"
         description={
@@ -61,6 +67,7 @@ export function CrupdateLinkGroupForm({
       >
         <Trans message="Active" />
       </FormSwitch>
+
       <FormSwitch
         name="rotator"
         description={
@@ -69,6 +76,24 @@ export function CrupdateLinkGroupForm({
       >
         <Trans message="Rotator" />
       </FormSwitch>
+
+{isRotated&&<FormSwitch
+        name="switch_at"
+        description={<Trans message="Set URL short switch time" />}
+      >
+        <Trans message="Switch At" />
+      </FormSwitch>}
+
+      {isSwitchAtChecked && (
+        <div className="mt-4 p-4 border rounded bg-gray-100">
+          <FormTextField
+            name="ads_rotated_at"
+            label={<Trans message="Switch Time" />}
+            type="time"
+            className="mb-4"
+          />
+        </div>
+      )}
     </Form>
   );
 }
