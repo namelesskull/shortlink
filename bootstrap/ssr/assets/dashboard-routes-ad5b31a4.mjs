@@ -10136,7 +10136,7 @@ const linksDatatableColumns = [
     key: "ads_rotation_status",
     allowsSorting: true,
     header: () => /* @__PURE__ */ jsx(Trans, { message: "Status" }),
-    body: (link) => link.ads_rotation_status ? /* @__PURE__ */ jsx(Chip, { size: "xs", radius: "rounded", className: "capitalize", children: /* @__PURE__ */ jsx(Trans, { message: link.ads_rotation_status }) }) : ""
+    body: (link) => link.groups[0].pivot.ads_rotation_status ? /* @__PURE__ */ jsx(Chip, { size: "xs", radius: "rounded", className: "capitalize", children: /* @__PURE__ */ jsx(Trans, { message: link.groups[0].pivot.ads_rotation_status }) }) : ""
   },
   {
     key: "actions",
@@ -18082,4 +18082,4 @@ export {
   CustomPageDatatableFilters as y,
   articlesSvg as z
 };
-//# sourceMappingURL=dashboard-routes-f9a8f97e.mjs.map
+//# sourceMappingURL=dashboard-routes-ad5b31a4.mjs.map

@@ -67,7 +67,7 @@ class Link extends BaseModel
             'link_group_link',
             null,
             'link_group_id',
-        );
+        )->withPivot('ads_rotation_status');
     }
 
     public function biolinks(): BelongsToMany

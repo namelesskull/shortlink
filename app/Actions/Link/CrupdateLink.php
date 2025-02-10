@@ -44,7 +44,7 @@ class CrupdateLink
         }
 
         $existLinkCount = Link::whereHas('groups', function ($qry) use ($data) {
-            $qry->where('id', $data['groups'][0]);
+            $qry->where('link_groups.id', $data['groups'][0]);
         })->count();
 
         $attributes = !$link->exists
@@ -52,7 +52,6 @@ class CrupdateLink
                 'user_id' => Auth::id(),
                 'hash' => Str::random(5),
                 'active' => true,
-                'ads_rotation_status' => $existLinkCount > 0 ? 'sleep' : 'running'
             ])
             : [];
 
@@ -101,6 +100,7 @@ class CrupdateLink
         }
 
         $link->fill($attributes)->save();
+        $link->groups()->sync([$data['groups'][0] => ['ads_rotation_status' => $existLinkCount > 0 ? 'sleep' : 'running']], false);
 
         $this->saveLinkRules($link, $data);
 

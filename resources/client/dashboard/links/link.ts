@@ -16,7 +16,6 @@ export interface Link {
   image: string | null;
   alias: string | null;
   description: string;
-  ads_rotation_status:string
   expires_at: string;
   activates_at: string;
   clicked_at: string;

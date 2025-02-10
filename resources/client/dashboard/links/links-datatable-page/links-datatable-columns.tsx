@@ -20,8 +20,8 @@ import {LinkClipboardButton} from '@app/dashboard/links/sharing/link-clipboard-b
 import {NameWithAvatar} from '@common/datatable/column-templates/name-with-avatar';
 import {PermissionAwareButton} from '@app/dashboard/upgrade/permission-aware-button';
 import {BarChartIcon} from '@common/icons/material/BarChart';
-
-export const linksDatatableColumns: ColumnConfig<Link>[] = [
+//interface should  be Link
+export const linksDatatableColumns: ColumnConfig<any>[] = [
   {
     key: 'summary',
     header: () => <Trans message="Summary" />,
@@ -115,8 +115,8 @@ export const linksDatatableColumns: ColumnConfig<Link>[] = [
     allowsSorting: true,
     header: () => <Trans message="Status" />,
     body: link =>
-      link.ads_rotation_status ?       <Chip size="xs" radius="rounded" className="capitalize">
-    <Trans message={link.ads_rotation_status} />
+      link.groups[0].pivot.ads_rotation_status ?       <Chip size="xs" radius="rounded" className="capitalize">
+    <Trans message={link.groups[0].pivot.ads_rotation_status} />
   </Chip> : '',
   },
   

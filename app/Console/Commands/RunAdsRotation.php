@@ -30,7 +30,7 @@ class RunAdsRotation extends Command
     {
         $linkGroup = $this->argument('linkGroup');
         $runningLink = Link::whereHas('groups', function ($qry) use ($linkGroup) {
-            $qry->where('id', $linkGroup.id)
+            $qry->where('link_groups.id', $linkGroup.id)
                 ->wherePivot('ads_rotation_status', 'running');
         })
             ->first();
@@ -42,8 +42,8 @@ class RunAdsRotation extends Command
             ->orderBy('created_at', 'asc')
             ->first();
         if ($nextLink) {
-            $nextLink->groups()->updateExistingPivot($linkGroup.id, ['ads_rotation_status', 'running']);
-            $runningLink->groups()->updateExistingPivot($linkGroup.id, ['ads_rotation_status', 'sleep']);
+            $nextLink->groups()->sync([$linkGroup.id => ['ads_rotation_status' => 'running']]);
+            $runningLink->groups()->sync([$linkGroup.id => ['ads_rotation_status' => 'sleep']]);
         }
     }
 }

@@ -4,6 +4,11 @@ import {CustomDomain} from '@common/custom-domains/custom-domain';
 import {TrackingPixel} from '@app/dashboard/tracking-pixels/tracking-pixel';
 import {Tag} from '@common/tags/tag';
 
+interface Pivot {
+  ads_rotation_status:string
+
+}
+
 export interface LinkGroup {
   id: number;
   name: string;
@@ -12,8 +17,10 @@ export interface LinkGroup {
   pixels?: TrackingPixel[];
   tags?: Tag[];
   hash: string;
+  pivot?: Pivot;
   active: boolean;
   rotator: boolean;
+  ads_rotation_status?:string;
   switch_at?:boolean,
   ads_rotated_at?:string,
   user_id: number;
