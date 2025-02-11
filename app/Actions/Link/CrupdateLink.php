@@ -43,10 +43,6 @@ class CrupdateLink
             }
         }
 
-        $existLinkCount = Link::whereHas('groups', function ($qry) use ($data) {
-            $qry->where('link_groups.id', $data['groups'][0]);
-        })->count();
-
         $attributes = !$link->exists
             ? array_merge($this->getMetadataFromUrl($longUrl), [
                 'user_id' => Auth::id(),
@@ -100,7 +96,29 @@ class CrupdateLink
         }
 
         $link->fill($attributes)->save();
-        $link->groups()->sync([$data['groups'][0] => ['ads_rotation_status' => $existLinkCount > 0 ? 'sleep' : 'running']], false);
+        if ($data['is_new']) {
+            $exLinkCount = Link::whereHas('groups', function ($qry) use ($data) {
+                $qry->where('link_groups.id', $data['groups'][0]);
+            })->count();
+            $link->groups()->sync([$data['groups'][0] => ['ads_rotation_status' => $exLinkCount > 0 ? 'sleep' : 'running']], false);
+        } else {
+            if ($data['ads_rotation_status'] === 'running') {
+                $exLinkIds = Link::whereHas('groups', function ($qry) use ($data) {
+                    $qry->where('link_groups.id', $data['groups'][0]);
+                })
+                    ->pluck('id');
+                $linkGroup = LinkGroup::findOrFail($data['groups'][0]);
+                $syncData = [];
+                foreach ($exLinkIds as $id) {
+                    if ($id === $link->id) {
+                        $syncData[$id] = ['ads_rotation_status' => 'running'];
+                    } else {
+                        $syncData[$id] = ['ads_rotation_status' => 'sleep'];
+                    }
+                }
+                $linkGroup->links()->sync($syncData);
+            }
+        }
 
         $this->saveLinkRules($link, $data);
 
