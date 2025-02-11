@@ -95,4 +95,18 @@ class LinkGroupController extends BaseController
             'pagination' => $dataSource->paginate(),
         ]);
     }
+
+    public function detachLinks($groupId, $links)
+    {
+        // Find the LinkGroup
+        $linkGroup = LinkGroup::findOrFail($groupId);
+
+        // Convert comma-separated string to an array
+        $linkIds = explode(',', $links);
+
+        // Remove multiple links from the pivot table
+        $linkGroup->links()->detach($linkIds);
+
+        return $this->success();
+    }
 }

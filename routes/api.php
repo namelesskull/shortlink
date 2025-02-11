@@ -48,6 +48,7 @@ Route::group(['prefix' => 'v1'], function() {
         Route::get('link-group/{linkGroup}/links', [LinkGroupController::class, 'links']);
         Route::post('link-group/{linkGroup}/detach', [LinkGroupAttachmentsController::class, 'detach']);
         Route::post('link-group/{linkGroup}/attach', [LinkGroupAttachmentsController::class, 'attach']);
+        Route::delete('link-group/{linkGroup}/links/{link}', [LinkGroupController::class, 'detachLinks']);
 
         // BIOLINKS
         Route::put('biolink/{biolink}/content-item', [BiolinkContentItemController::class, 'update']);
