@@ -65,7 +65,7 @@ class CrupdateLink
                 $attributes[$key] = $value ?? false;
             } elseif ($key === 'type') {
                 $attributes[$key] = $value ?? 'direct';
-            } elseif ($key === 'type_id') {laravel 11 kernel.php
+            } elseif ($key === 'type_id') {
                 $attributes[$key] = $value ?? null;
             } elseif ($key === 'utm') {
                 $attributes[$key] = $value ?? null;
