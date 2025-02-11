@@ -45,7 +45,11 @@ class Kernel extends ConsoleKernel
             $schedule->command('horizon:snapshot')->everyFiveMinutes();
         }
 
-        $schedule->command(RunAdsRotation::class)->everyMinute();
+        $schedule->command(RunAdsRotation::class)
+                 ->everyMinute()
+                 ->withoutOverlapping()
+                 ->onOneServer()
+                 ->sendOutputTo(storage_path('logs/ads_rotation.log'));
     }
 
     /**
