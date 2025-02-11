@@ -3,6 +3,7 @@
 namespace App\Actions\Link;
 
 use App\Models\Link;
+use App\Models\LinkGroup;
 use Common\Auth\Roles\Role;
 use Common\Tags\Tag;
 use Illuminate\Support\Arr;
@@ -64,7 +65,7 @@ class CrupdateLink
                 $attributes[$key] = $value ?? false;
             } elseif ($key === 'type') {
                 $attributes[$key] = $value ?? 'direct';
-            } elseif ($key === 'type_id') {
+            } elseif ($key === 'type_id') {laravel 11 kernel.php
                 $attributes[$key] = $value ?? null;
             } elseif ($key === 'utm') {
                 $attributes[$key] = $value ?? null;
