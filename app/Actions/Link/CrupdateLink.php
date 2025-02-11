@@ -43,11 +43,6 @@ class CrupdateLink
             }
         }
 
-        $isNew = false;
-        if (!$link->exists) {
-            $isNew;
-        }
-
         $attributes = !$link->exists
             ? array_merge($this->getMetadataFromUrl($longUrl), [
                 'user_id' => Auth::id(),
@@ -101,7 +96,7 @@ class CrupdateLink
         }
 
         $link->fill($attributes)->save();
-        if ($isNew) {
+        if ($data['is_new']) {
             $exLinkCount = Link::whereHas('groups', function ($qry) use ($data) {
                 $qry->where('link_groups.id', $data['groups'][0]);
             })->count();

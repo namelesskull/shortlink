@@ -41,6 +41,7 @@ class LinkController extends BaseController
     {
         $this->authorize('store', Link::class);
 
+        $request->merge(['is_new' => true]);
         $link = app(CrupdateLink::class)->execute(
             $this->link->newInstance(),
             $request->all(),
@@ -53,6 +54,7 @@ class LinkController extends BaseController
     {
         $this->authorize('store', Link::class);
 
+        $request->merge(['is_new' => true]);
         $data = $request->all();
 
         $multipleUrls = collect($request->get('long_urls'))
@@ -80,6 +82,7 @@ class LinkController extends BaseController
     {
         $this->authorize('update', $link);
 
+        $request->merge(['is_new' => false]);
         $link = app(CrupdateLink::class)->execute($link, $request->all());
 
         return $this->success(['link' => $link]);
