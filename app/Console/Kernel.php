@@ -9,7 +9,6 @@ use App\Console\Commands\ResetDemoSite;
 use App\Console\Commands\RunAdsRotation;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
-use App\Models\LinkGroup;
 
 class Kernel extends ConsoleKernel
 {
@@ -46,13 +45,7 @@ class Kernel extends ConsoleKernel
             $schedule->command('horizon:snapshot')->everyFiveMinutes();
         }
 
-        $linkGroups = LinkGroup::whereNotNull('ads_rotated_at')->get();
-        foreach ($linkGroups as $linkGroup) {
-            $schedule
-                ->command(RunAdsRotation::class, [$linkGroup->id])
-                ->everyMinute();
-                //->dailyAt($linkGroup->add_rotated_at);
-        }
+        $schedule->command(RunAdsRotation::class)->everyMinute();
     }
 
     /**
