@@ -118,6 +118,8 @@ class CrupdateLink
                     }
                 }
                 $linkGroup->links()->sync($syncData);
+            } else {
+                $link->groups()->sync([$data['groups'][0] => ['ads_rotation_status' => 'sleep']], false);
             }
         }
 
