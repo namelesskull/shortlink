@@ -9642,12 +9642,13 @@ function CrupdateLinkForm({
     {
       form,
       onSubmit: (values) => {
+        const status = values.ads_rotation_status ? "running" : "sleep";
         if (!urlIsValid(values.long_url)) {
           form.setError("long_url", {
             message: trans(message("This url is invalid."))
           });
         } else {
-          onSubmit(values);
+          onSubmit({ ...values, ads_rotation_status: status });
         }
       },
       onBeforeSubmit: () => {
@@ -9680,6 +9681,14 @@ function CrupdateLinkForm({
             maxLength: max_len
           }
         ),
+        /* @__PURE__ */ jsx(
+          FormSwitch,
+          {
+            name: "ads_rotation_status",
+            description: /* @__PURE__ */ jsx(Trans, { message: "Ads Rotation Status" }),
+            children: /* @__PURE__ */ jsx(Trans, { message: "Status" })
+          }
+        ),
         !hideAlias && /* @__PURE__ */ jsx(AliasField, { form, name: "alias" }),
         /* @__PURE__ */ jsx(LinkSettingsForm, { hiddenFields })
       ]
@@ -9703,6 +9712,7 @@ function buildLinkeableDefaultFormValues(linkeable) {
   }
   return {
     hash: linkeable.hash,
+    ads_rotation_status: linkeable.ads_rotation_status,
     active: linkeable.active,
     activates_at: linkeable.activates_at,
     expires_at: linkeable.expires_at,
@@ -9961,6 +9971,7 @@ function UpdateLinkDialog({
   ] });
 }
 function buildDefaultFormValues(link) {
+  var _a2, _b2, _c;
   const values = buildLinkeableDefaultFormValues(link);
   return {
     ...values,
@@ -9968,6 +9979,7 @@ function buildDefaultFormValues(link) {
     alias: link.alias,
     type: link.type,
     type_id: link.type_id,
+    ads_rotation_status: ((_c = (_b2 = (_a2 = link.groups) == null ? void 0 : _a2[0]) == null ? void 0 : _b2.pivot) == null ? void 0 : _c.ads_rotation_status) === "running" ? true : false,
     groups: link.groups
   };
 }
@@ -10136,7 +10148,28 @@ const linksDatatableColumns = [
     key: "ads_rotation_status",
     allowsSorting: true,
     header: () => /* @__PURE__ */ jsx(Trans, { message: "Status" }),
-    body: (link) => link.groups[0].pivot.ads_rotation_status ? /* @__PURE__ */ jsx(Chip, { size: "xs", radius: "rounded", className: "capitalize", children: /* @__PURE__ */ jsx(Trans, { message: link.groups[0].pivot.ads_rotation_status }) }) : ""
+    body: (link) => link.groups[0].pivot.ads_rotation_status === "running" ? /* @__PURE__ */ jsx(
+      Chip,
+      {
+        color: "positive",
+        size: "xs",
+        radius: "rounded",
+        className: "capitalize cursor-pointer",
+        children: /* @__PURE__ */ jsx(Trans, { message: link.groups[0].pivot.ads_rotation_status })
+      }
+    ) : link.groups[0].pivot.ads_rotation_status === "sleep" ? /* @__PURE__ */ jsx(
+      Chip,
+      {
+        onClick: (e) => {
+          e.stopPropagation();
+        },
+        color: "danger",
+        size: "xs",
+        radius: "rounded",
+        className: "capitalize cursor-pointer",
+        children: /* @__PURE__ */ jsx(Trans, { message: link.groups[0].pivot.ads_rotation_status })
+      }
+    ) : ""
   },
   {
     key: "actions",
@@ -10955,9 +10988,10 @@ function CreateLinkGroupDialog() {
     defaultValues: {
       active: true,
       hash: nanoid(6),
-      rotator: false,
+      rotator: true,
       domain_id: (custom_domains == null ? void 0 : custom_domains.allow_all_option) ? void 0 : 0,
-      ads_rotated_at: "1:00"
+      switch_at: true,
+      ads_rotated_at: "01:00:00"
     }
   });
   const createGroup = useCreateLinkGroup(form);
@@ -18082,4 +18116,4 @@ export {
   CustomPageDatatableFilters as y,
   articlesSvg as z
 };
-//# sourceMappingURL=dashboard-routes-ad5b31a4.mjs.map
+//# sourceMappingURL=dashboard-routes-8f2556ca.mjs.map

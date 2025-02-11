@@ -24,9 +24,10 @@ export function CreateLinkGroupDialog() {
     defaultValues: {
       active: true,
       hash: nanoid(6),
-      rotator: false,
+      rotator: true,
       domain_id: custom_domains?.allow_all_option ? undefined : 0,
-      ads_rotated_at:"1:00"
+      switch_at:true,
+      ads_rotated_at:"01:00:00"
     },
   });
 

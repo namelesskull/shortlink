@@ -1,13 +1,13 @@
-import {CustomPage} from '@common/admin/custom-pages/custom-page';
-import {Tag} from '@common/tags/tag';
-import {User} from '@common/auth/user';
-import {LinkRule} from './link-rule';
-import {LinkOverlay} from '@app/dashboard/link-overlays/link-overlay';
-import {TrackingPixel} from '@app/dashboard/tracking-pixels/tracking-pixel';
-import {LinkGroup} from '@app/dashboard/link-groups/link-group';
-import {Biolink} from '@app/dashboard/biolink/biolink';
+import { CustomPage } from "@common/admin/custom-pages/custom-page";
+import { Tag } from "@common/tags/tag";
+import { User } from "@common/auth/user";
+import { LinkRule } from "./link-rule";
+import { LinkOverlay } from "@app/dashboard/link-overlays/link-overlay";
+import { TrackingPixel } from "@app/dashboard/tracking-pixels/tracking-pixel";
+import { LinkGroup } from "@app/dashboard/link-groups/link-group";
+import { Biolink } from "@app/dashboard/biolink/biolink";
 
-export type LinkType = 'direct' | 'frame' | 'splash' | 'overlay' | 'page';
+export type LinkType = "direct" | "frame" | "splash" | "overlay" | "page";
 
 export interface Link {
   id: number;
@@ -21,6 +21,7 @@ export interface Link {
   clicked_at: string;
   password?: string;
   utm?: string;
+  ads_rotation_status?: string;
   has_password: boolean;
   active: boolean;
   domain_id: number;
@@ -35,11 +36,11 @@ export interface Link {
   updated_at: string;
   rules: LinkRule[];
   tags?: Tag[];
-  groups?: (Omit<LinkGroup, 'pixels'> | Omit<Biolink, 'content'>)[];
+  groups?: (Omit<LinkGroup, "pixels"> | Omit<Biolink, "content">)[];
   pixels?: TrackingPixel[];
   clicks_count?: number;
   user?: User;
   deleted_at?: string;
-  model_type: 'link';
+  model_type: "link";
   animation?: string;
 }

@@ -1,33 +1,35 @@
-import {ColumnConfig} from '@common/datatable/column-config';
-import {Link} from '../link';
-import {Trans} from '@common/i18n/trans';
-import {removeProtocol} from '@common/utils/urls/remove-protocol';
-import {FormattedNumber} from '@common/i18n/formatted-number';
-import {Chip} from '@common/ui/forms/input-field/chip-field/chip';
-import {CheckIcon} from '@common/icons/material/Check';
-import {CloseIcon} from '@common/icons/material/Close';
-import {FormattedDate} from '@common/i18n/formatted-date';
-import {Tooltip} from '@common/ui/tooltip/tooltip';
-import {Link as RouterLink} from 'react-router-dom';
-import {IconButton} from '@common/ui/buttons/icon-button';
-import {DialogTrigger} from '@common/ui/overlays/dialog/dialog-trigger';
-import {EditIcon} from '@common/icons/material/Edit';
-import {UpdateLinkDialog} from '../dialogs/update-link-dialog';
-import React from 'react';
-import {LinkImage} from '@app/dashboard/links/link-image';
-import {ShareLinkButton} from '@app/dashboard/links/sharing/share-link-button';
-import {LinkClipboardButton} from '@app/dashboard/links/sharing/link-clipboard-button';
-import {NameWithAvatar} from '@common/datatable/column-templates/name-with-avatar';
-import {PermissionAwareButton} from '@app/dashboard/upgrade/permission-aware-button';
-import {BarChartIcon} from '@common/icons/material/BarChart';
+import { ColumnConfig } from "@common/datatable/column-config";
+import { Link } from "../link";
+import { Trans } from "@common/i18n/trans";
+import { removeProtocol } from "@common/utils/urls/remove-protocol";
+import { FormattedNumber } from "@common/i18n/formatted-number";
+import { Chip } from "@common/ui/forms/input-field/chip-field/chip";
+import { CheckIcon } from "@common/icons/material/Check";
+import { CloseIcon } from "@common/icons/material/Close";
+import { FormattedDate } from "@common/i18n/formatted-date";
+import { Tooltip } from "@common/ui/tooltip/tooltip";
+import { Link as RouterLink } from "react-router-dom";
+import { IconButton } from "@common/ui/buttons/icon-button";
+import { DialogTrigger } from "@common/ui/overlays/dialog/dialog-trigger";
+import { EditIcon } from "@common/icons/material/Edit";
+import { UpdateLinkDialog } from "../dialogs/update-link-dialog";
+import React from "react";
+import { LinkImage } from "@app/dashboard/links/link-image";
+import { ShareLinkButton } from "@app/dashboard/links/sharing/share-link-button";
+import { LinkClipboardButton } from "@app/dashboard/links/sharing/link-clipboard-button";
+import { NameWithAvatar } from "@common/datatable/column-templates/name-with-avatar";
+import { PermissionAwareButton } from "@app/dashboard/upgrade/permission-aware-button";
+import { BarChartIcon } from "@common/icons/material/BarChart";
+import { Button } from "@common/ui/buttons/button";
+import { RunCircleIcon } from "@common/icons/material/RunCircle";
 //interface should  be Link
 export const linksDatatableColumns: ColumnConfig<any>[] = [
   {
-    key: 'summary',
+    key: "summary",
     header: () => <Trans message="Summary" />,
-    width: 'flex-3 min-w-200',
-    visibleInMode: 'all',
-    body: link => (
+    width: "flex-3 min-w-200",
+    visibleInMode: "all",
+    body: (link) => (
       <div>
         <div className="flex items-center gap-6 whitespace-nowrap">
           <LinkImage link={link} className="w-16 h-16" />
@@ -51,12 +53,12 @@ export const linksDatatableColumns: ColumnConfig<any>[] = [
     ),
   },
   {
-    key: 'user_id',
+    key: "user_id",
     allowsSorting: true,
     header: () => <Trans message="Owner" />,
-    width: 'flex-2 min-w-140',
-    body: link => {
-      if (!link.user) return '';
+    width: "flex-2 min-w-140",
+    body: (link) => {
+      if (!link.user) return "";
       return (
         <NameWithAvatar
           image={link.user.avatar}
@@ -67,29 +69,29 @@ export const linksDatatableColumns: ColumnConfig<any>[] = [
     },
   },
   {
-    key: 'clicks',
-    sortingKey: 'clicks_count',
+    key: "clicks",
+    sortingKey: "clicks_count",
     allowsSorting: true,
     header: () => <Trans message="Clicks" />,
-    body: link =>
-      link.clicks_count ? <FormattedNumber value={link.clicks_count} /> : '',
+    body: (link) =>
+      link.clicks_count ? <FormattedNumber value={link.clicks_count} /> : "",
   },
   {
-    key: 'type',
-    sortingKey: 'type',
+    key: "type",
+    sortingKey: "type",
     allowsSorting: true,
     header: () => <Trans message="Type" />,
-    body: link => (
+    body: (link) => (
       <Chip size="xs" radius="rounded" className="capitalize">
         <Trans message={link.type} />
       </Chip>
     ),
   },
   {
-    key: 'password',
+    key: "password",
     allowsSorting: true,
     header: () => <Trans message="Password" />,
-    body: link =>
+    body: (link) =>
       link.has_password ? (
         <CheckIcon className="icon-md text-positive" />
       ) : (
@@ -97,37 +99,58 @@ export const linksDatatableColumns: ColumnConfig<any>[] = [
       ),
   },
   {
-    key: 'expires_at',
+    key: "expires_at",
     allowsSorting: true,
     header: () => <Trans message="Expires at" />,
-    body: link =>
-      link.expires_at ? <FormattedDate date={link.expires_at} /> : '',
+    body: (link) =>
+      link.expires_at ? <FormattedDate date={link.expires_at} /> : "",
   },
   {
-    key: 'clicked_at',
+    key: "clicked_at",
     allowsSorting: true,
     header: () => <Trans message="Last clicked" />,
-    body: link =>
-      link.clicked_at ? <FormattedDate date={link.clicked_at} /> : '',
+    body: (link) =>
+      link.clicked_at ? <FormattedDate date={link.clicked_at} /> : "",
   },
   {
-    key: 'ads_rotation_status',
+    key: "ads_rotation_status",
     allowsSorting: true,
     header: () => <Trans message="Status" />,
-    body: link =>
-      link.groups[0].pivot.ads_rotation_status ?       <Chip size="xs" radius="rounded" className="capitalize">
-    <Trans message={link.groups[0].pivot.ads_rotation_status} />
-  </Chip> : '',
+    body: (link) =>
+      link.groups[0].pivot.ads_rotation_status === "running" ? (
+        <Chip
+          color="positive"
+          size="xs"
+          radius="rounded"
+          className="capitalize cursor-pointer"
+        >
+          <Trans message={link.groups[0].pivot.ads_rotation_status} />
+        </Chip>
+      ) : link.groups[0].pivot.ads_rotation_status === "sleep" ? (
+        <Chip
+          onClick={(e) => {
+            e.stopPropagation();
+          }}
+          color="danger"
+          size="xs"
+          radius="rounded"
+          className="capitalize cursor-pointer"
+        >
+          <Trans message={link.groups[0].pivot.ads_rotation_status} />
+        </Chip>
+      ) : (
+        ""
+      ),
   },
-  
+
   {
-    key: 'actions',
+    key: "actions",
     header: () => <Trans message="Actions" />,
     hideHeader: true,
-    align: 'end',
-    width: 'w-128 flex-shrink-0',
-    visibleInMode: 'all',
-    body: link => (
+    align: "end",
+    width: "w-128 flex-shrink-0",
+    visibleInMode: "all",
+    body: (link) => (
       <div className="text-muted">
         <Tooltip label={<Trans message="Link statistics" />}>
           <RouterLink to={`${link.id}`}>

@@ -1,22 +1,23 @@
-import {UseFormReturn} from 'react-hook-form';
-import {Form} from '@common/ui/forms/form';
-import {FormTextField} from '@common/ui/forms/input-field/text-field/text-field';
-import {Trans} from '@common/i18n/trans';
-import {useSettings} from '@common/core/settings/use-settings';
-import {Link} from '../link';
+import { UseFormReturn } from "react-hook-form";
+import { Form } from "@common/ui/forms/form";
+import { FormTextField } from "@common/ui/forms/input-field/text-field/text-field";
+import { Trans } from "@common/i18n/trans";
+import { useSettings } from "@common/core/settings/use-settings";
+import { Link } from "../link";
 import {
   HidableLinkSettingsField,
   LinkSettingsForm,
-} from '@app/dashboard/links/forms/link-settings-form';
-import {urlIsValid} from '@app/dashboard/links/utils/url-is-valid';
-import {useTrans} from '@common/i18n/use-trans';
-import {message} from '@common/i18n/message';
-import {AliasField} from '@app/dashboard/links/forms/alias-field';
-import {LinkeableFormValues} from '@app/dashboard/links/utils/build-linkeable-payload';
-import clsx from 'clsx';
+} from "@app/dashboard/links/forms/link-settings-form";
+import { urlIsValid } from "@app/dashboard/links/utils/url-is-valid";
+import { useTrans } from "@common/i18n/use-trans";
+import { message } from "@common/i18n/message";
+import { AliasField } from "@app/dashboard/links/forms/alias-field";
+import { LinkeableFormValues } from "@app/dashboard/links/utils/build-linkeable-payload";
+import clsx from "clsx";
+import { FormSwitch } from "@common/ui/forms/toggle/switch";
 
 export interface CrupdateLinkFormValues
-  extends Omit<Link, 'id' | 'utm'>,
+  extends Omit<Link, "id" | "utm">,
     LinkeableFormValues {
   position?: number;
 }
@@ -35,28 +36,30 @@ export function CrupdateLinkForm({
   showButtonLabelField,
   hiddenFields,
 }: CrupdateLinkFormProps) {
-  const {clearErrors} = form;
-  const {trans} = useTrans();
+  const { clearErrors } = form;
+  const { trans } = useTrans();
   const {
-    links: {min_len, max_len},
+    links: { min_len, max_len },
   } = useSettings();
-  const hideAlias = hiddenFields?.includes('alias');
+  const hideAlias = hiddenFields?.includes("alias");
 
   return (
     <Form
       form={form}
-      onSubmit={values => {
+      onSubmit={(values) => {
+        const status = values.ads_rotation_status ? "running" : "sleep";
         if (!urlIsValid(values.long_url)) {
-          form.setError('long_url', {
-            message: trans(message('This url is invalid.')),
+          form.setError("long_url", {
+            message: trans(message("This url is invalid.")),
           });
         } else {
-          onSubmit(values);
+          onSubmit({ ...values, ads_rotation_status: status });
+          // onSubmit(values);
         }
       }}
       onBeforeSubmit={() => {
         // hook form won't clear errors for fields that are not bound to input
-        clearErrors('alias');
+        clearErrors("alias");
       }}
       id={formId}
     >
@@ -65,7 +68,7 @@ export function CrupdateLinkForm({
           name="name"
           label={<Trans message="Button label" />}
           className="mb-24 flex-auto"
-          placeholder={trans(message('e.g. My Webpage'))}
+          placeholder={trans(message("e.g. My Webpage"))}
           autoFocus
         />
       )}
@@ -76,11 +79,17 @@ export function CrupdateLinkForm({
         autoComplete="off"
         spellCheck="false"
         required
-        className={clsx(hideAlias ? 'mb-24' : 'mb-12')}
+        className={clsx(hideAlias ? "mb-24" : "mb-12")}
         autoFocus={!showButtonLabelField}
         minLength={min_len}
         maxLength={max_len}
       />
+      <FormSwitch
+        name="ads_rotation_status"
+        description={<Trans message="Ads Rotation Status" />}
+      >
+        <Trans message="Status" />
+      </FormSwitch>
       {!hideAlias && <AliasField form={form} name="alias" />}
       <LinkSettingsForm hiddenFields={hiddenFields} />
     </Form>

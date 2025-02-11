@@ -1,16 +1,23 @@
-import {UseFormReturn} from 'react-hook-form';
-import {Form} from '@common/ui/forms/form';
-import {FormTextField} from '@common/ui/forms/input-field/text-field/text-field';
-import {Trans} from '@common/i18n/trans';
-import {FormSwitch} from '@common/ui/forms/toggle/switch';
-import {LinkDomainSelect} from '@app/dashboard/links/forms/link-domain-select';
-import {LinkGroup} from '../../link-group';
-import {AliasField} from '@app/dashboard/links/forms/alias-field';
+import { UseFormReturn } from "react-hook-form";
+import { Form } from "@common/ui/forms/form";
+import { FormTextField } from "@common/ui/forms/input-field/text-field/text-field";
+import { Trans } from "@common/i18n/trans";
+import { FormSwitch } from "@common/ui/forms/toggle/switch";
+import { LinkDomainSelect } from "@app/dashboard/links/forms/link-domain-select";
+import { LinkGroup } from "../../link-group";
+import { AliasField } from "@app/dashboard/links/forms/alias-field";
 
 export interface CrupdateLinkGroupPayload
   extends Pick<
     LinkGroup,
-    'name' | 'description' | 'hash' | 'active' | 'rotator' | 'domain_id' | 'switch_at' | 'ads_rotated_at'
+    | "name"
+    | "description"
+    | "hash"
+    | "active"
+    | "rotator"
+    | "domain_id"
+    | "switch_at"
+    | "ads_rotated_at"
   > {}
 
 interface CrupdateLinkGroupFormProps {
@@ -24,16 +31,16 @@ export function CrupdateLinkGroupForm({
   form,
   formId,
 }: CrupdateLinkGroupFormProps) {
-  const {clearErrors, watch} = form;
-  const isSwitchAtChecked = watch('switch_at');
-  const isRotated = watch("rotator")
+  const { clearErrors, watch } = form;
+  const isSwitchAtChecked = watch("switch_at");
+  const isRotated = watch("rotator");
 
   return (
     <Form
       form={form}
       id={formId}
       onBeforeSubmit={() => {
-        clearErrors('hash');
+        clearErrors("hash");
       }}
       onSubmit={onSubmit}
     >
@@ -77,12 +84,14 @@ export function CrupdateLinkGroupForm({
         <Trans message="Rotator" />
       </FormSwitch>
 
-{isRotated&&<FormSwitch
-        name="switch_at"
-        description={<Trans message="Set URL short switch time" />}
-      >
-        <Trans message="Switch At" />
-      </FormSwitch>}
+      {isRotated && (
+        <FormSwitch
+          name="switch_at"
+          description={<Trans message="Set URL short switch time" />}
+        >
+          <Trans message="Switch At" />
+        </FormSwitch>
+      )}
 
       {isSwitchAtChecked && (
         <div className="mt-4 p-4 border rounded bg-gray-100">
