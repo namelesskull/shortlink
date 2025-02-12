@@ -3,7 +3,7 @@ import { jsxs, jsx, Fragment as Fragment$1 } from "react/jsx-runtime";
 import { Outlet, Link, useLocation, Navigate, useNavigate, useParams, NavLink, useOutletContext, useRoutes } from "react-router-dom";
 import clsx from "clsx";
 import { u as useSettings, C as CustomMenu, T as Trans, a as apiClient, b as useLocalStorage, E as ErrorIcon, s as setInLocalStorage, m as message, c as createSvgIcon, t as toast, q as queryClient, o as onFormQueryError, d as useTrans, e as useDialogContext, D as Dialog, f as DialogHeader, g as DialogBody, F as Form$1, h as FormTextField, i as DialogFooter, B as Button, j as showHttpErrorToast, k as Chip, l as CheckIcon, n as CloseIcon, p as FormattedDate, r as Tooltip, I as IconButton, v as DialogTrigger, w as ConfirmationDialog, L as LoginIcon, x as FormImageSelector, y as useValueLists, z as DoneAllIcon, A as List, G as ListItem, H as TextField, J as opacityAnimation, S as Skeleton, K as createSvgIconFromTree, M as FormSelect, N as Item, O as Section, P as getInputFieldClassNames, Q as useNumberFormatter, R as clamp, U as createEventHandler, V as ButtonBase, W as KeyboardArrowLeftIcon, X as MixedText, Y as StaticPageTitle, Z as FileUploadProvider, _ as useAppearanceEditorMode, $ as ProgressCircle, a0 as IllustratedMessage, a1 as SvgImage, a2 as useNavigate$1, a3 as useBootstrapData, a4 as FullPageLoader, a5 as LinkStyle, a6 as SiteConfigContext, a7 as getBootstrapData, a8 as useIsMobileMediaQuery, a9 as SelectForwardRef, aa as ProgressBar, ab as LinkIcon, ac as ExternalLink, ad as MenuTrigger, ae as Menu, af as RemoteFavicon, ag as removeProtocol, ah as FormRadioGroup, ai as FormRadio, aj as DateFormatPresets, ak as prettyBytes, al as useSocialLogin, am as useField, an as Field, ao as useResendVerificationEmail, ap as useUser, aq as useUploadAvatar, ar as useRemoveAvatar, as as openDialog, at as openUploadWindow, au as UploadInputType, av as SearchIcon, aw as isAbsoluteUrl, ax as useMediaQuery, ay as useProducts, az as FormattedPrice, aA as FormattedNumber, aB as useCustomPage, aC as PageMetaTags, aD as PageStatus, aE as FormattedRelativeTime, aF as closeDialog, aG as AuthRoute, aH as NotFoundPage } from "../server-entry.mjs";
-import { D as DashboardLayout, a as DashboardNavbar, b as DashboardSidenav, c as DashboardContent, F as FilterOperator, d as FilterControlType, e as createdAtFilter, u as updatedAtFilter, f as FormDatePicker, g as FormSwitch, N as NameWithAvatar, C as ChipList, h as DataTablePage, i as DeleteSelectedItemsAction, j as DataTableEmptyStateMessage, k as DataTableExportCsvButton, l as DataTableAddItemButton, m as chunkArray, A as Accordion, n as AccordionItem, o as AddIcon, S as Switch, p as FormChipField, q as usePointerEvents, K as KeyboardArrowRightIcon, r as ColorIcon, s as ColorPickerDialog, t as DeleteIcon, v as useSortable, w as DragIndicatorIcon, x as AceDialog, y as CustomPageDatatableFilters, z as articlesSvg, T as TuneIcon, M as MoreVertIcon, B as themeValueToHex, E as Tabs, G as TabList, H as Tab, I as TabPanels, J as TabPanel, L as ChipField, O as useCurrentDateTime, P as useStickySentinel, Q as DatatableDataQueryKey, R as downloadFileFromUrl, U as useNormalizedModels, V as Avatar, W as DataTable, X as useDataTable, Y as slugifyString, Z as FileDownloadIcon, _ as USER_MODEL, $ as timestampFilter, a0 as FormNormalizedModelField, a1 as LineChart, a2 as PolarAreaChart, a3 as BarChart, a4 as GeoChart, a5 as DateRangePresets, a6 as ReportDateSelector, a7 as ClicksReportCharts, a8 as SharedDashboardRoutes, a9 as ArticleEditorStickyHeader, aa as ArticleEditorTitle, ab as FontSelector, ac as BooleanIndicator, ad as InfoIcon } from "./dashboard-routes-8f2556ca.mjs";
+import { D as DashboardLayout, a as DashboardNavbar, b as DashboardSidenav, c as DashboardContent, F as FilterOperator, d as FilterControlType, e as createdAtFilter, u as updatedAtFilter, f as FormDatePicker, g as FormSwitch, N as NameWithAvatar, C as ChipList, h as DataTablePage, i as DeleteSelectedItemsAction, j as DataTableEmptyStateMessage, k as DataTableExportCsvButton, l as DataTableAddItemButton, m as chunkArray, A as Accordion, n as AccordionItem, o as AddIcon, S as Switch, p as FormChipField, q as usePointerEvents, K as KeyboardArrowRightIcon, r as ColorIcon, s as ColorPickerDialog, t as DeleteIcon, v as useSortable, w as DragIndicatorIcon, x as AceDialog, y as CustomPageDatatableFilters, z as articlesSvg, T as TuneIcon, M as MoreVertIcon, B as themeValueToHex, E as Tabs, G as TabList, H as Tab, I as TabPanels, J as TabPanel, L as ChipField, O as useCurrentDateTime, P as useStickySentinel, Q as DatatableDataQueryKey, R as downloadFileFromUrl, U as useNormalizedModels, V as Avatar, W as DataTable, X as useDataTable, Y as slugifyString, Z as FileDownloadIcon, _ as USER_MODEL, $ as timestampFilter, a0 as FormNormalizedModelField, a1 as LineChart, a2 as PolarAreaChart, a3 as BarChart, a4 as GeoChart, a5 as DateRangePresets, a6 as ReportDateSelector, a7 as ClicksReportCharts, a8 as SharedDashboardRoutes, a9 as ArticleEditorStickyHeader, aa as ArticleEditorTitle, ab as FontSelector, ac as BooleanIndicator, ad as InfoIcon } from "./dashboard-routes-ee5716aa.mjs";
 import { useQuery, useMutation, useQueryClient, keepPreviousData } from "@tanstack/react-query";
 import { S as SectionHelper, E as EditIcon, B as Breadcrumb, a as BreadcrumbItem, C as ChevronRightIcon } from "./Edit-432e54b5.mjs";
 import React, { Fragment, useState, Suspense, useRef, useEffect, useMemo, useId, useCallback, forwardRef, useContext, memo, isValidElement, cloneElement } from "react";
@@ -884,7 +884,7 @@ const iconGridStyle = {
   button: "flex flex-col items-center rounded hover:bg-hover h-90 aspect-square"
 };
 const skeletons = [...Array(60).keys()];
-const IconList = React.lazy(() => import("./icon-list-3b2867f5.mjs"));
+const IconList = React.lazy(() => import("./icon-list-92f2dd03.mjs"));
 function IconPicker({ onIconSelected }) {
   const { trans } = useTrans();
   const [value, setValue] = React.useState("");
@@ -11712,7 +11712,7 @@ function Actions() {
     }
   );
 }
-const ReportsPage = React.lazy(() => import("./admin-report-page-efe48516.mjs"));
+const ReportsPage = React.lazy(() => import("./admin-report-page-d7b2aa26.mjs"));
 const AdminRouteConfig = [
   {
     path: "appearance",
@@ -11891,4 +11891,4 @@ export {
   iconGridStyle as i,
   useAdminReport as u
 };
-//# sourceMappingURL=admin-routes-1571388e.mjs.map
+//# sourceMappingURL=admin-routes-33886e2b.mjs.map

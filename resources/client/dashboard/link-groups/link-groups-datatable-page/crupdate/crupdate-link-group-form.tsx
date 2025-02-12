@@ -93,10 +93,10 @@ export function CrupdateLinkGroupForm({
         </FormSwitch>
       )}
 
-      {isSwitchAtChecked && (
+      {isSwitchAtChecked && isRotated && (
         <div className="mt-4 p-4 border rounded bg-gray-100">
           <FormTextField
-            name="ads_rotated_at"
+            name={`${isSwitchAtChecked ? "ads_rotated_at" : "sss"}`}
             label={<Trans message="Switch Time" />}
             type="time"
             className="mb-4"

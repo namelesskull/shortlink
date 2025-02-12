@@ -1,23 +1,23 @@
 {
-  "_Edit-c6e03e3c.js": {
-    "file": "assets/Edit-c6e03e3c.js",
+  "_Edit-e9cf244f.js": {
+    "file": "assets/Edit-e9cf244f.js",
     "imports": [
       "resources/client/main.tsx"
     ]
   },
-  "_OpenInNew-de7d1e8e.js": {
-    "file": "assets/OpenInNew-de7d1e8e.js",
+  "_OpenInNew-405a9b06.js": {
+    "file": "assets/OpenInNew-405a9b06.js",
     "imports": [
       "resources/client/main.tsx"
     ]
   },
-  "_TaskAlt-30e889a8.js": {
-    "file": "assets/TaskAlt-30e889a8.js",
+  "_TaskAlt-dc9dfbef.js": {
+    "file": "assets/TaskAlt-dc9dfbef.js",
     "imports": [
       "resources/client/main.tsx"
     ]
   },
-  "_admin-routes-7388c96a.js": {
+  "_admin-routes-41e68d81.js": {
     "assets": [
       "assets/team-de984127.svg",
       "assets/dropdown-menu-c9b3bd6a.svg",
@@ -35,29 +35,29 @@
       "common/resources/client/article-editor/article-body-editor.tsx",
       "common/resources/client/admin/analytics/admin-report-page.tsx"
     ],
-    "file": "assets/admin-routes-7388c96a.js",
+    "file": "assets/admin-routes-41e68d81.js",
     "imports": [
       "resources/client/main.tsx",
-      "_dashboard-routes-273931c3.js",
-      "_Edit-c6e03e3c.js",
-      "_use-resume-subscription-4a0f836f.js"
+      "_dashboard-routes-e390d092.js",
+      "_Edit-e9cf244f.js",
+      "_use-resume-subscription-6ac01982.js"
     ],
     "isDynamicEntry": true
   },
-  "_billing-redirect-message-19c41a01.js": {
-    "file": "assets/billing-redirect-message-19c41a01.js",
+  "_billing-redirect-message-00c43bc1.js": {
+    "file": "assets/billing-redirect-message-00c43bc1.js",
     "imports": [
       "resources/client/main.tsx",
-      "_TaskAlt-30e889a8.js"
+      "_TaskAlt-dc9dfbef.js"
     ]
   },
-  "_c-e4a267fc.js": {
-    "file": "assets/c-e4a267fc.js",
+  "_c-a5f324da.js": {
+    "file": "assets/c-a5f324da.js",
     "imports": [
       "resources/client/main.tsx"
     ]
   },
-  "_dashboard-routes-273931c3.js": {
+  "_dashboard-routes-e390d092.js": {
     "assets": [
       "assets/articles-8bfd9f17.svg",
       "assets/upgrade-1a8523e3.svg",
@@ -98,21 +98,21 @@
       "common/resources/client/article-editor/article-body-editor.tsx",
       "common/resources/client/article-editor/article-body-editor.tsx"
     ],
-    "file": "assets/dashboard-routes-273931c3.js",
+    "file": "assets/dashboard-routes-e390d092.js",
     "imports": [
       "resources/client/main.tsx",
-      "_Edit-c6e03e3c.js"
+      "_Edit-e9cf244f.js"
     ],
     "isDynamicEntry": true
   },
-  "_index-0d4fd616.js": {
-    "file": "assets/index-0d4fd616.js",
+  "_index-62f64227.js": {
+    "file": "assets/index-62f64227.js",
     "imports": [
       "resources/client/main.tsx"
     ]
   },
-  "_use-resume-subscription-4a0f836f.js": {
-    "file": "assets/use-resume-subscription-4a0f836f.js",
+  "_use-resume-subscription-6ac01982.js": {
+    "file": "assets/use-resume-subscription-6ac01982.js",
     "imports": [
       "resources/client/main.tsx"
     ]
@@ -124,22 +124,22 @@
       "assets/worker-php-47e5dfe7.js",
       "assets/worker-javascript-c4599136.js"
     ],
-    "file": "assets/ace-editor-e26d0a6e.js",
+    "file": "assets/ace-editor-f050b251.js",
     "imports": [
       "resources/client/main.tsx",
-      "_index-0d4fd616.js"
+      "_index-62f64227.js"
     ],
     "isDynamicEntry": true,
     "src": "common/resources/client/ace-editor/ace-editor.tsx"
   },
   "common/resources/client/admin/analytics/admin-report-page.tsx": {
-    "file": "assets/admin-report-page-aa63fcb7.js",
+    "file": "assets/admin-report-page-95c3088c.js",
     "imports": [
       "resources/client/main.tsx",
-      "_admin-routes-7388c96a.js",
-      "_dashboard-routes-273931c3.js",
-      "_Edit-c6e03e3c.js",
-      "_use-resume-subscription-4a0f836f.js"
+      "_admin-routes-41e68d81.js",
+      "_dashboard-routes-e390d092.js",
+      "_Edit-e9cf244f.js",
+      "_use-resume-subscription-6ac01982.js"
     ],
     "isDynamicEntry": true,
     "src": "common/resources/client/admin/analytics/admin-report-page.tsx"
@@ -192,10 +192,10 @@
     "css": [
       "assets/article-body-editor-c0ff5600.css"
     ],
-    "file": "assets/article-body-editor-4215f373.js",
+    "file": "assets/article-body-editor-82afb3ef.js",
     "imports": [
       "resources/client/main.tsx",
-      "_c-e4a267fc.js"
+      "_c-a5f324da.js"
     ],
     "isDynamicEntry": true,
     "src": "common/resources/client/article-editor/article-body-editor.tsx"
@@ -276,14 +276,14 @@
     "assets": [
       "assets/paypal-c2a77c63.svg"
     ],
-    "file": "assets/billing-page-routes-25c53113.js",
+    "file": "assets/billing-page-routes-3f2428de.js",
     "imports": [
       "resources/client/main.tsx",
-      "_Edit-c6e03e3c.js",
-      "_billing-redirect-message-19c41a01.js",
-      "_use-resume-subscription-4a0f836f.js",
-      "_OpenInNew-de7d1e8e.js",
-      "_TaskAlt-30e889a8.js"
+      "_Edit-e9cf244f.js",
+      "_billing-redirect-message-00c43bc1.js",
+      "_use-resume-subscription-6ac01982.js",
+      "_OpenInNew-405a9b06.js",
+      "_TaskAlt-dc9dfbef.js"
     ],
     "isDynamicEntry": true,
     "src": "common/resources/client/billing/billing-page/billing-page-routes.tsx"
@@ -293,11 +293,11 @@
     "src": "common/resources/client/billing/billing-page/panels/paypal.svg"
   },
   "common/resources/client/billing/checkout/checkout-routes.tsx": {
-    "file": "assets/checkout-routes-77e60e81.js",
+    "file": "assets/checkout-routes-0b64f57d.js",
     "imports": [
       "resources/client/main.tsx",
-      "_billing-redirect-message-19c41a01.js",
-      "_TaskAlt-30e889a8.js"
+      "_billing-redirect-message-00c43bc1.js",
+      "_TaskAlt-dc9dfbef.js"
     ],
     "isDynamicEntry": true,
     "src": "common/resources/client/billing/checkout/checkout-routes.tsx"
@@ -307,7 +307,7 @@
     "src": "common/resources/client/billing/upgrade/upgrade.svg"
   },
   "common/resources/client/charts/lazy-chart.tsx": {
-    "file": "assets/lazy-chart-0afb7441.js",
+    "file": "assets/lazy-chart-af8cc9ae.js",
     "imports": [
       "resources/client/main.tsx"
     ],
@@ -330,10 +330,10 @@
     "css": [
       "assets/swagger-api-docs-page-34ffaf07.css"
     ],
-    "file": "assets/swagger-api-docs-page-2127b9b8.js",
+    "file": "assets/swagger-api-docs-page-d2290467.js",
     "imports": [
       "resources/client/main.tsx",
-      "_index-0d4fd616.js"
+      "_index-62f64227.js"
     ],
     "isDynamicEntry": true,
     "src": "common/resources/client/swagger/swagger-api-docs-page.tsx"
@@ -346,9 +346,9 @@
     "css": [
       "assets/highlight-b5e2c008.css"
     ],
-    "file": "assets/highlight-09f0706f.js",
+    "file": "assets/highlight-8b8f1841.js",
     "imports": [
-      "_c-e4a267fc.js",
+      "_c-a5f324da.js",
       "resources/client/main.tsx"
     ],
     "isDynamicEntry": true,
@@ -359,15 +359,15 @@
     "src": "common/resources/client/ui/font-selector/font.svg"
   },
   "common/resources/client/ui/icon-picker/icon-list.tsx": {
-    "file": "assets/icon-list-bdf43c1f.js",
+    "file": "assets/icon-list-0e7727ea.js",
     "imports": [
       "resources/client/main.tsx",
-      "_dashboard-routes-273931c3.js",
-      "_OpenInNew-de7d1e8e.js",
-      "_admin-routes-7388c96a.js",
-      "_Edit-c6e03e3c.js",
-      "_TaskAlt-30e889a8.js",
-      "_use-resume-subscription-4a0f836f.js"
+      "_dashboard-routes-e390d092.js",
+      "_OpenInNew-405a9b06.js",
+      "_admin-routes-41e68d81.js",
+      "_Edit-e9cf244f.js",
+      "_TaskAlt-dc9dfbef.js",
+      "_use-resume-subscription-6ac01982.js"
     ],
     "isDynamicEntry": true,
     "src": "common/resources/client/ui/icon-picker/icon-list.tsx"
@@ -512,13 +512,13 @@
       "common/resources/client/text-editor/highlight/highlight.ts",
       "common/resources/client/billing/billing-page/billing-page-routes.tsx",
       "common/resources/client/billing/checkout/checkout-routes.tsx",
-      "_admin-routes-7388c96a.js",
+      "_admin-routes-41e68d81.js",
       "common/resources/client/swagger/swagger-api-docs-page.tsx",
-      "_dashboard-routes-273931c3.js",
-      "_admin-routes-7388c96a.js",
+      "_dashboard-routes-e390d092.js",
+      "_admin-routes-41e68d81.js",
       "common/resources/client/swagger/swagger-api-docs-page.tsx"
     ],
-    "file": "assets/main-22a85645.js",
+    "file": "assets/main-1800b027.js",
     "isEntry": true,
     "src": "resources/client/main.tsx"
   }

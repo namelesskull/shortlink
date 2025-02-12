@@ -10724,10 +10724,10 @@ function CrupdateLinkGroupForm({
             children: /* @__PURE__ */ jsx(Trans, { message: "Switch At" })
           }
         ),
-        isSwitchAtChecked && /* @__PURE__ */ jsx("div", { className: "mt-4 p-4 border rounded bg-gray-100", children: /* @__PURE__ */ jsx(
+        isSwitchAtChecked && isRotated && /* @__PURE__ */ jsx("div", { className: "mt-4 p-4 border rounded bg-gray-100", children: /* @__PURE__ */ jsx(
           FormTextField,
           {
-            name: "ads_rotated_at",
+            name: `${isSwitchAtChecked ? "ads_rotated_at" : "sss"}`,
             label: /* @__PURE__ */ jsx(Trans, { message: "Switch Time" }),
             type: "time",
             className: "mb-4"
@@ -10990,8 +10990,8 @@ function CreateLinkGroupDialog() {
       hash: nanoid(6),
       rotator: true,
       domain_id: (custom_domains == null ? void 0 : custom_domains.allow_all_option) ? void 0 : 0,
-      switch_at: true,
-      ads_rotated_at: "01:00:00"
+      switch_at: false,
+      ads_rotated_at: ""
     }
   });
   const createGroup = useCreateLinkGroup(form);
@@ -18116,4 +18116,4 @@ export {
   CustomPageDatatableFilters as y,
   articlesSvg as z
 };
-//# sourceMappingURL=dashboard-routes-8f2556ca.mjs.map
+//# sourceMappingURL=dashboard-routes-ee5716aa.mjs.map
